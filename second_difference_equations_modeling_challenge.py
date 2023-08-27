@@ -34,18 +34,16 @@ def Initialize(T_m_initial,T_o_initial, Ccf , T_A):
 # Función que va actualizando los valores cuando calienta o cuando enfria
 def updateHeat(T_m, T_o, Ccf,T_A):
 
-    # Hay que definir las ecuaciones
-    T_m_new = 1
-    T_o_new = 1
+    T_m_new = T_m + Ccf * (T_A - T_m)
+    T_o_new = T_o + Ccf * (T_A - T_o)
 
     return T_m_new, T_o_new
 
 # Función que va actualizando los valores de las ecuaciones
 def updateCool(T_m, T_o):
 
-    # Hay que definir las ecuaciones
-    T_m_new = 1
-    T_o_new = 1
+    T_m_new = T_m + 0.01 * (2 - T_m)
+    T_o_new = T_o + 0.2 * (1- T_o)
 
     return T_m_new, T_o_new
 
